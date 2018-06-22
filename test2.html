@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+    <title>Document</title>
+</head>
+<body>
+<OBJECT id="MSComm1" CLASSID="clsid:648A5600-2C6E-101B-82B6-000000000014"
+        codebase="mscomm32.ocx" type="application/x-oleobject"  >
+    <PARAM   NAME="CommPort"   VALUE="3"/>
+    <PARAM   NAME="Settings"   VALUE="9600,N,8,1"/>
+
+    <PARAM   NAME="RTSEnable"   VALUE="1"/>
+    <PARAM   NAME="DTREnable"   VALUE="1"/>
+    <PARAM   NAME="Handshaking"   VALUE="0"/>
+    <PARAM   NAME="NullDiscard"   VALUE="0"/>
+    <PARAM   NAME="ParityReplace"   VALUE="?"/>
+
+    <PARAM   NAME="EOFEnable"   VALUE="0"/>
+    <PARAM   NAME="InputMode"   VALUE="0"/>
+    <PARAM   NAME="InBufferSize"   VALUE="1024"/>
+    <PARAM   NAME="InputLen"   VALUE="0"/>
+    <PARAM   NAME="OutBufferSize"   VALUE="512"/>
+
+    <PARAM   NAME="SThreshold"   VALUE="0"/>
+    <PARAM   NAME="RThreshold"   VALUE="1"/>
+
+</OBJECT>
+<button class="btn" onclick="test()" id="btn">发送</button>
+
+<script LANGUAGE="JavaScript">
+    function test() {
+      MSComm1.Output = 'shang'
+    }
+
+    var btn = document.querySelector('#btn')
+    //接收数据
+    if(MSComm1.PortOpen==true) {
+        try{
+          MSComm1.PortOpen=false;
+        }catch(ex){
+          alert(ex.message)
+        }
+    }else{
+        try{
+          MSComm1.PortOpen=true;
+        }catch(ex){
+          alert(ex.message);
+        }
+        console.log(MSComm1.PortOpen);
+    }
+
+    function MSComm1_OnComm() {
+        switch (MSComm1.CommEvent) {
+            case 1:{ window.alert("Send OK！"); break;}  //发送事件
+            case 2: {
+                Receive();
+                break;
+            }
+            default: alert("Event Raised!"+MSComm1.CommEvent);;
+        }
+    }
+
+    function Receive() {
+      var obj = {val: ''}
+      setTimeout(function () {
+        var RcvByte = MSComm1.Input;
+        if (RcvByte.length > 2) {
+          console.log(RcvByte)
+        }
+      }, 100)
+    }
+
+    function MSComm1::OnComm() {
+      MSComm1_OnComm()
+    }
+</script>
+<!--<SCRIPT LANGUAGE="javascript" FOR=MSComm1 EVENT=OnComm>-->
+  <!--MSComm1_OnComm()-->
+<!--</SCRIPT>-->
+</body>
+</html>
