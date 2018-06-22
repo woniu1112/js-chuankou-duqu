@@ -1,5 +1,5 @@
-##### web页面通过js获取串口数据（仅限IE浏览器）
-**资料**
+## web页面通过js获取串口数据（仅限IE浏览器）
+**资料** <br /> 
 [判断串口是否正常](https://jingyan.baidu.com/article/7f41ecec0bad3e593d095cb3.html) <br /> 
 [Mscomm是干什么的？](https://baike.baidu.com/item/mscomm/3252525?fr=aladdin) <br /> 
 [MScomm控件注册方法](https://jingyan.baidu.com/article/375c8e19a2953b25f2a22986.html) <br /> 
@@ -13,4 +13,4 @@
 >串口返回数据是ascll  标准的数据位为 7位（0-128），扩展数据位 8位（0-256）
 
 **注意：1、当串口返回数据包含 中文或其他字符时，“数据位” 改为8 ；** <br /> 
-**2、当出现已经注册mscomm32.ocx 仍然提示无法创建对象时，在注册表搜索‘648A5600-2C6E-101B-82B6-000000000014’全部删除，直到搜索不到**
+		**2、当出现已经注册mscomm32.ocx 仍然提示无法创建对象时，在注册表搜索‘648A5600-2C6E-101B-82B6-000000000014’全部删除，直到搜索不到**
