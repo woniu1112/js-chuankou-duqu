@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>sa</title>
+</head>
+<body>
+<OBJECT id="MSComm1" CLASSID="clsid:6C520E17-86B1-4D10-B908-70BEC06FFCA8"></OBJECT>
+</body>
+<script>
+  MSComm1.Initialize('XY_SG_TZFII', "", "1","", "")
+  function MSComm1::Done() {
+    console.log('体重：'+MSComm1.GetResultValue('tz'))
+    console.log('BMI：'+MSComm1.GetResultValue('bmi'))
+    console.log('身高：'+MSComm1.GetResultValue('sg'))
+  }
+</script>
+<!--<script LANGUAGE="javascript" FOR=MSComm1 EVENT=Done>-->
+  <!---->
+<!--</script>-->
+</html>
